@@ -1,0 +1,18 @@
+feign:
+  hystrix:
+    enabled: true
+spring:
+  data:
+    web:
+      pageable:
+        one-indexed-parameters: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "info,health,metrics"
+    jmx:
+      exposure:
+        include: ""
+        exclude: "*"
+business-date-service: "http://business-date-svc"

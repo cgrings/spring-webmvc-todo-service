@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-api-v1-0
+  labels:
+    app: todo-api
+    version: v1-0
+    tier: backend
+spec:
+  selector:
+    matchLabels:
+      app: todo-api
+      version: v1-0
+      tier: backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: todo-api
+        version: v1-0
+        tier: backend
+    spec:
+      containers:
+      - name: to-do-service
+        image: cgrings/todo-service:0.0.1-SNAPSHOT
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: web-port
+          containerPort: 8080
+        resources:
+          requests:
+            cpu: 100m
+            memory: 1Gi
+          limits:
+            cpu: 100m
+            memory: 1Gi
