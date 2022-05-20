@@ -1,6 +1,3 @@
-feign:
-  hystrix:
-    enabled: true
 spring:
   data:
     web:
@@ -15,4 +12,3 @@ management:
       exposure:
         include: ""
         exclude: "*"
-business-date-service: "http://business-date-svc"

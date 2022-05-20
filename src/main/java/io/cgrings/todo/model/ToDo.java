@@ -1,86 +1,51 @@
 package io.cgrings.todo.model;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Positive;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "TODO")
 public class ToDo {
 
-	@Id
-	@Column(name = "id_todo")
-	private String id;
-	@Column(name = "nm_todo")
-	private String name;
-	@Column(name = "tx_notes")
-	private String notes;
-	@Column(name = "dt_start")
-	private LocalDate start;
-	@Column(name = "nr_duration")
-	private Integer duration;
-	@Column(name = "dt_due")
-	private LocalDate due;
-	@Column(name = "bl_done")
-	private Boolean done;
+    @Id
+    @Column(name = "id_todo")
+    private UUID id;
 
-	public String getId() {
-		return id;
-	}
+    @NotBlank
+    @Column(name = "nm_todo")
+    private String name;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    @NotBlank
+    @Column(name = "tx_notes")
+    private String notes;
 
-	public String getName() {
-		return name;
-	}
+    @NotNull
+    @Column(name = "dt_start")
+    private LocalDate start;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @NotNull
+    @Positive
+    @Column(name = "nr_duration")
+    private Integer duration;
 
-	public String getNotes() {
-		return notes;
-	}
+    @PastOrPresent
+    @Column(name = "dt_due")
+    private LocalDate due;
 
-	public void setNotes(String notes) {
-		this.notes = notes;
-	}
-
-	public LocalDate getStart() {
-		return start;
-	}
-
-	public void setStart(LocalDate start) {
-		this.start = start;
-	}
-
-	public Integer getDuration() {
-		return duration;
-	}
-
-	public void setDuration(Integer duration) {
-		this.duration = duration;
-	}
-
-	public LocalDate getDue() {
-		return due;
-	}
-
-	public void setDue(LocalDate due) {
-		this.due = due;
-	}
-
-	public Boolean getDone() {
-		return done;
-	}
-
-	public void setDone(Boolean done) {
-		this.done = done;
-	}
+    @NotNull
+    @Column(name = "bl_done")
+    private Boolean done;
 
 }
